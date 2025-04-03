@@ -1,3 +1,6 @@
+# Now let's populate the ultra-animated version of the HTML with floating shapes, hover effects, and enhanced transitions.
+
+ultra_animated_html = '''
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,59 +10,127 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fffaf4;
-      color: #444;
       margin: 0;
       padding: 0;
+      background-color: #fffaf4;
+      color: #444;
+      overflow-x: hidden;
       scroll-behavior: smooth;
     }
+
+    /* Animated Background Shapes */
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: floatShape 20s infinite ease-in-out alternate;
+    }
+
+    .shape1 {
+      width: 150px; height: 150px;
+      background: #ffb3c6;
+      top: 10%; left: 5%;
+      animation-delay: 0s;
+    }
+
+    .shape2 {
+      width: 100px; height: 100px;
+      background: #ffc2d1;
+      top: 50%; left: 80%;
+      animation-delay: 5s;
+    }
+
+    .shape3 {
+      width: 120px; height: 120px;
+      background: #ffe5ec;
+      top: 75%; left: 20%;
+      animation-delay: 10s;
+    }
+
+    @keyframes floatShape {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-30px) translateX(20px); }
+    }
+
     header {
-      background-color: #f8e1e7;
+      background: linear-gradient(-45deg, #f8e1e7, #ffe5ec, #ffb3c6, #ffc2d1);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       padding: 2rem;
       text-align: center;
-      transform: translateY(-20px);
-      opacity: 0;
-      animation: slideDown 1s ease-out forwards;
     }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: #ff7096;
+      animation: slideInTop 1s ease-out forwards;
     }
+
     header p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #777;
+      animation: fadeIn 2s ease-out forwards;
     }
+
+    @keyframes slideInTop {
+      0% { transform: translateY(-50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     nav {
       text-align: center;
       padding: 1rem;
     }
+
     nav a {
       margin: 0 1rem;
       color: #ff7096;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
+
+    nav a:hover {
+      color: #d94a7a;
+      transform: scale(1.1);
+    }
+
     section {
       padding: 2rem;
       max-width: 1000px;
       margin: 0 auto;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
       transition: opacity 1s ease, transform 1s ease;
     }
+
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     .cta {
       background-color: #ffe5ec;
       padding: 2rem;
       text-align: center;
       border-radius: 12px;
     }
+
     .cta h2 {
       color: #ff7096;
     }
+
     .button {
       background-color: #ffb3c6;
       padding: 0.75rem 1.5rem;
@@ -69,17 +140,26 @@
       font-weight: bold;
       display: inline-block;
       margin-top: 1rem;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: floatButton 3s ease-in-out infinite;
     }
+
     .button:hover {
-      transform: scale(1.05);
-      background-color: #ff94a8;
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
+
+    @keyframes floatButton {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
     form {
       background-color: #fff0f5;
       padding: 2rem;
       border-radius: 10px;
     }
+
     form input, form textarea {
       width: 100%;
       padding: 0.75rem;
@@ -88,6 +168,7 @@
       border: 1px solid #ccc;
       border-radius: 6px;
     }
+
     form button {
       background-color: #ff7096;
       color: white;
@@ -98,9 +179,11 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
+
     form button:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -108,54 +191,14 @@
       color: #777;
     }
 
-    /* Advanced Animations */
-    @keyframes slideDown {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    @keyframes floatButton {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    header {
-      background: linear-gradient(-45deg, #f8e1e7, #ffe5ec, #ffb3c6, #ffc2d1);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-    }
-    section {
-      animation: fadeUp 1s ease forwards;
-      opacity: 0;
-    }
-    section.visible {
-      opacity: 1;
-    }
-    section:nth-of-type(1) { animation-delay: 0.2s; }
-    section:nth-of-type(2) { animation-delay: 0.4s; }
-    section:nth-of-type(3) { animation-delay: 0.6s; }
-    section:nth-of-type(4) { animation-delay: 0.8s; }
-
-    .button, form button {
-      animation: floatButton 3s ease-in-out infinite;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      text-shadow: 1px 1px 2px rgba(255, 112, 150, 0.2);
-    }
   </style>
 </head>
 <body>
+  <!-- Floating Background Elements -->
+  <div class="shape shape1"></div>
+  <div class="shape shape2"></div>
+  <div class="shape shape3"></div>
+
   <header>
     <h1>Little WanderPlay</h1>
     <p>Big Fun for Little Adventurers</p>
@@ -237,3 +280,10 @@
   </script>
 </body>
 </html>
+'''
+
+# Write the updated ultra-animated HTML content into the file
+with open(enhanced_code_path, "w") as f:
+    f.write(ultra_animated_html)
+
+enhanced_code_path
