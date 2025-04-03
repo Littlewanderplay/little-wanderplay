@@ -1,9 +1,9 @@
-
+<!-- FULL UPDATED HTML CODE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Little WanderPlay</title>
   <style>
     body {
@@ -12,11 +12,15 @@
       color: #444;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
     header {
       background-color: #f8e1e7;
       padding: 2rem;
       text-align: center;
+      transform: translateY(-20px);
+      opacity: 0;
+      animation: slideDown 1s ease-out forwards;
     }
     header h1 {
       font-size: 2.5rem;
@@ -40,6 +44,13 @@
       padding: 2rem;
       max-width: 1000px;
       margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .cta {
       background-color: #ffe5ec;
@@ -50,12 +61,6 @@
     .cta h2 {
       color: #ff7096;
     }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #fce8ef;
-      color: #777;
-    }
     .button {
       background-color: #ffb3c6;
       padding: 0.75rem 1.5rem;
@@ -65,6 +70,11 @@
       font-weight: bold;
       display: inline-block;
       margin-top: 1rem;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .button:hover {
+      transform: scale(1.05);
+      background-color: #ff94a8;
     }
     form {
       background-color: #fff0f5;
@@ -87,6 +97,22 @@
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    form button:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #fce8ef;
+      color: #777;
+    }
+    @keyframes slideDown {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -133,38 +159,42 @@
 
   <section id="booking">
     <h2>Booking Form</h2>
-    
-<form action="https://formspree.io/f/mgvaneep" method="POST">
-  <input type="hidden" name="_captcha" value="false">
-
-  <label for="parent-name">Parent's Name</label>
-  <input type="text" id="parent-name" name="parent-name" required>
-
-  <label for="child-age">Child's Age</label>
-  <input type="text" id="child-age" name="child-age" required>
-
-  <label for="event-date">Event Date</label>
-  <input type="date" id="event-date" name="event-date" required>
-
-  <label for="event-location">Event Location</label>
-  <input type="text" id="event-location" name="event-location" required>
-
-  <label for="email">Email Address</label>
-  <input type="email" id="email" name="email" required>
-
-  <label for="phone">Phone Number</label>
-  <input type="tel" id="phone" name="phone" required>
-
-  <label for="notes">Additional Notes</label>
-  <textarea id="notes" name="notes" rows="4"></textarea>
-
-  <button type="submit">Submit Booking Request</button>
-</form>
-
+    <form action="https://formspree.io/f/mgvaneep" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <label for="parent-name">Parent's Name</label>
+      <input type="text" id="parent-name" name="parent-name" required>
+      <label for="child-age">Child's Age</label>
+      <input type="text" id="child-age" name="child-age" required>
+      <label for="event-date">Event Date</label>
+      <input type="date" id="event-date" name="event-date" required>
+      <label for="event-location">Event Location</label>
+      <input type="text" id="event-location" name="event-location" required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
+      <button type="submit">Submit Booking Request</button>
+    </form>
   </section>
 
   <footer>
     <p>&copy; 2025 Little WanderPlay. All rights reserved.</p>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
